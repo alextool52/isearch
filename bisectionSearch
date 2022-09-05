@@ -1,0 +1,30 @@
+l = [0,0,1,3,3,3,4,5,14]
+print('n', len(l)-1)
+t = 0
+x = len(l)
+def search(l, t, dir, x):
+    m = int(-1*(len(l)/2)//1*-1)
+    print(l, t, dir, x, 'm=',m)
+    if t > l[m]:
+        if dir == 0:
+            x -=len(l)-m
+        if dir == 1:
+            x +=m
+        l = l[m:]
+        search(l, t, 1, x)
+    elif t < l[m]:
+        if dir == 0:
+            x -=len(l)-m
+        if dir == 1:
+            x +=m
+        l = l[:m]
+        search(l, t, 0, x)
+    elif t == l[m]:
+        if dir == 0:
+            x -= len(l) - m
+        if dir == 1:
+            x += m
+        print(x)
+        return 0
+search(l,t, 0, x)
+
